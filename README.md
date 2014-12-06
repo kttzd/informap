@@ -7,7 +7,9 @@ Require
 Required software:
 ```
 python2.7
+nmap
 dig
+nslookup
 ```
 
 Required python plugins:

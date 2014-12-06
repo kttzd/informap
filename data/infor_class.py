@@ -48,7 +48,7 @@ class scan(object):
 				print "sorry ,something wrong"
 				
 			print "hosts is "+host
-			dns_name=os.popen('nslookup -type=ns'+host).read()
+			dns_name=os.popen('nslookup -type=ns '+host).read()
 			dns_servers=re.findall('nameserver=([\w\.]+)',dns_name)
 			for server in dns_servers:
 				if len(server)<5:server+=host

@@ -8,13 +8,15 @@ from data.infor_class import scan
 from data.CDN import cdn
 def main():
 	try:
-		opts,args=getopt.getopt(sys.argv[1:],"yh:i:u:c:",["help","host=","ip=","url=","c="])
+		opts,args=getopt.getopt(sys.argv[1:],"yh:i:u:c:d:t:",["help","host=","ip=","url=","c=","dns=","cdn="])
 	except getopt.GetoptError:
 		print "--------"
 	_host=None
 	_ip=None
 	_url=None
 	_c=None
+	_d=None
+	_t=None
 	for name,value in opts:
 		if name in ("-y","--help"):
 			
@@ -28,14 +30,22 @@ def main():
 			_url=value
 		elif name in ("-c","--c"):
 			_c=value
+		elif name in ("-d","--dns"):
+			_d=value
+		elif name in ("-t","--cdn"):
+			_t=value
 	if _host:
 		
 		host=scan(_host)
 		#host.getDnsZone()
 		a=host.getSubDomains()
+		print a["subdomains"]
 		for host in  a["subdomains"]:
 			h=cdn(host)
 			h.getCdn()
+	if _d:
+		host=scan()
+		host.getDnsZone(host=_d)
 	if _ip:
 		ip=scan(_ip)
 		print ip.getFromChinaZ()
@@ -50,7 +60,13 @@ def main():
 		print h
 		#for key in h.keys():
 		#	print getC.getFromChinaZ(ip=key)
-
+	if _t:
+		with open(_t) as f:
+			config=f.readlines()
+		for host in config:
+			host.strip("\n")
+			h=cdn(host)
+			h.getCdn()
 
 if __name__=="__main__":
 	main()

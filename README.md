@@ -14,6 +14,8 @@ nslookup
 
 Required python plugins:
 ```
+sys
+urlparse
 json
 requests
 beautifulsoup4

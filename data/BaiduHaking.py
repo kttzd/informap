@@ -37,11 +37,18 @@ class GetSub(object):
 		for i in range(len(get_url)):
 			test=str(get_url[i].string)
 			test="http://"+test
-			sub.append(urlparse(test[0:test.index("\xc2")]).netloc)	
-
+			sub.append(urlparse(test[0:test.index("\xc2")]).netloc)
+def get_tn():
+	h=requests.get("http://www.baidu.com/s?wd=site:baidu.com&rn=100")
+	soup=BeautifulSoup(h.text)                      
+	pn_script=str(soup.find("script"))                                      
+	regex = re.compile("'tn=(.{0,}?)&")                                                                                     
+	matchArray = regex.findall(pn_script)                                                                                                   
+	return matchArray[0]
 def main():
 	global sub
-	fuck=GetSub(site="189.cn",tn="coming soon")
+	print "tn ->"+get_tn()
+	fuck=GetSub(site="189.cn",tn=get_tn())
 	nums=int(fuck.get_nums())
 	if nums<=100:fuck.get_url(pn=0)
 	elif nums<=200:

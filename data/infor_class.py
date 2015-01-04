@@ -13,8 +13,14 @@ from libnmap.parser import NmapParser,NmapParserException
 class scan(object):
 	def __init__(self,host=None,ip=None):
 		super(scan,self).__init__()
-		self.host=host
-		self.ip=socket.gethostbyname(self.host) #单独调用调用类本身的参数
+		try:
+			self.host=host
+		except:
+			pass
+		try:
+			self.ip=socket.gethostbyname(self.host) #单独调用调用类本身的参数
+		except:
+			pass
 		#self.domains
 	def getFromChinaZ(self,ip=None):   #ip反查接口  然后列表
 		try:
@@ -78,10 +84,7 @@ class scan(object):
 			#pritn e
 	def getC(self,ip=None,config=None):
 		try:
-			if ip==None:
-				ip=self.ip
 			count={}
-			ip=ip+"/24"
 			ops="-open -p%s"
 			getops=ops%config
 			nm=NmapProcess(ip,options=getops)

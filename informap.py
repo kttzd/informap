@@ -55,8 +55,8 @@ def main():
 	if _c:
 		with open("config/1.txt") as f:
 			config=f.readlines()[0].strip("\n")
-		getC=scan(host=_c)
-		h=getC.getC(config=config)
+		getC=scan()
+		h=getC.getC(ip=_c,config=config)
 		print h
 		#for key in h.keys():
 		#	print getC.getFromChinaZ(ip=key)

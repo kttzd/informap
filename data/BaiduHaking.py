@@ -48,7 +48,7 @@ def get_tn():
 def getSub(site):
 	global sub
 	print "tn ->"+get_tn()
-	fuck=GetSub(site="189.cn",tn=get_tn())
+	fuck=GetSub(site,tn=get_tn())
 	nums=int(fuck.get_nums())
 	if nums<=100:fuck.get_url(pn=0)
 	elif nums<=200:

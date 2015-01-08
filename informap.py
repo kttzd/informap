@@ -6,9 +6,10 @@ import sys
 import getopt
 from data.infor_class import scan
 from data.CDN import cdn
+from data.BaiduHaking import getSub
 def main():
 	try:
-		opts,args=getopt.getopt(sys.argv[1:],"yh:i:u:c:d:t:",["help","host=","ip=","url=","c=","dns=","cdn="])
+		opts,args=getopt.getopt(sys.argv[1:],"yh:i:u:c:d:t:b:",["help","host=","ip=","url=","c=","dns=","cdn=","baidu="])
 	except getopt.GetoptError:
 		print "--------"
 	_host=None
@@ -17,6 +18,7 @@ def main():
 	_c=None
 	_d=None
 	_t=None
+	_b=None
 	for name,value in opts:
 		if name in ("-y","--help"):
 			
@@ -34,6 +36,8 @@ def main():
 			_d=value
 		elif name in ("-t","--cdn"):
 			_t=value
+		elif name in ("-b","--baidu"):
+			_b=value
 	if _host:
 		
 		host=scan(_host)
@@ -67,6 +71,10 @@ def main():
 			host.strip("\n")
 			h=cdn(host)
 			h.getCdn()
-
+	if _b:
+		try:
+			getSub(_b)
+		except:
+			print "sorry something wrong"
 if __name__=="__main__":
 	main()

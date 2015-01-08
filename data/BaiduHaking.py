@@ -45,7 +45,7 @@ def get_tn():
 	regex = re.compile("'tn=(.{0,}?)&")                                                                                     
 	matchArray = regex.findall(pn_script)                                                                                                   
 	return matchArray[0]
-def main():
+def getSub(site):
 	global sub
 	print "tn ->"+get_tn()
 	fuck=GetSub(site="189.cn",tn=get_tn())
@@ -75,7 +75,9 @@ def main():
 	#fuck.get_url(pn=100)
 	#fuck.get_url(pn=200)
 	sub=list(set(sub))
-	print sub
+	for i in sub:
+		print i
 if __name__=="__main__":
 	#print fuck.get_nums()
-	main()
+	site="189.cn"
+	getSub(site)

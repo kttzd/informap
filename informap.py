@@ -53,7 +53,7 @@ def main():
 	if _ip:
 		ip=scan(_ip)
 		print ip.getFromChinaZ()
-		print ip.getAsNum()
+		#print ip.getAsNum()
 	if _url:
 		url=scan(_url)
 	if _c:

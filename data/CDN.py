@@ -10,7 +10,7 @@ class cdn(object):
 	def __init__(self,host=None):
 		self.host=host
 		self.result=None
-		self.url="http://tool.17mon.cn/cdn.php"
+		self.url="http://www.ipip.net/cdn.php"
 		self.payload=dict(node="2",host=self.host) 
 	def getCdn(self):
 		try:

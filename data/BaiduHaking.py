@@ -14,7 +14,7 @@ class GetSub(object):
 		self.url="http://www.baidu.com/s"
 		self.tn=tn
 		self.rn=100
-		self.wd="site:%s -site:www.%s"
+		self.wd="site:*.%s -site:www.%s"
 		self.headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36'}
 		self.pn=0
 	def get_nums(self):
